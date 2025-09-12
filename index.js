@@ -1,28 +1,4 @@
-setTimeout(() => {
-  process.nextTick(() => {
-    console.log('На диване');
-  });
+const { User } = require('./modules');
 
-  setTimeout(() => {
-    console.log('Ехал слон.');
-    setImmediate(() => {
-      console.log('Кто не верит –');
-    });
-
-    setImmediate(() => {
-      console.log('Выйди вон!');
-    });
-  }, 10);
-
-  console.log('Был диван,');
-}, 100);
-
-process.nextTick(() => {
-  console.log('Чемодан,');
-});
-
-setImmediate(() => {
-  console.log('В чемодане');
-});
-
-console.log('Плыл по морю');
+const newUser = new User('Ивн Иванов', '03.08.1962', 'начать Карьеру');
+console.log(newUser);
