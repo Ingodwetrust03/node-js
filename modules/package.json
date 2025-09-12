@@ -1,0 +1,11 @@
+{
+  "name": "mypackage",
+  "version": "1.0.0",
+  "author": "Svetlana",
+  "description": "my project modules",
+  "main": "main.js",
+  "exports": {
+    "import": "./main.mjs",
+    "require": "./main.js"
+  }
+}
