@@ -1,5 +1,5 @@
 {
-  "name": "template-project",
+  "name": "lesson4",
   "version": "1.0.0",
   "description": "template node js project",
   "main": "index.js",
@@ -13,7 +13,7 @@
     "node",
     "app"
   ],
-  "author": "Maksim Leskin <maksim.leskin@methed.ru>",
+  "author": "Sveta Biryukova <svetalana.atlantis@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^9.1.1",
