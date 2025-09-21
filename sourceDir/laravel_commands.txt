@@ -1,0 +1,126 @@
+<head>
+        <title>Hexlet Blog - @yield('title')</title>
+        @include('shared.metatags')
+    </head>
+    <body>
+        <div class="container">
+            @yield('content')
+        </div>
+<div class="container">
+            @yield('content')
+        </div>
+		
+		<!-- Хранится в resources/views/about.blade.php -->
+
+@extends('layouts.app')
+
+<!-- Секция, содержимое которой обычный текст. -->
+@section('title', 'О блоге')
+
+<!-- Секция, содержащая HTML блок. Имеет открывающую и закрывающую часть. -->
+@section('content')
+    <h1>О блоге</h1>
+    <p>Эксперименты с Laravel на Хекслете</p>
+@endsection
+
+
+@hasSection('navigation')
+    <div class="pull-right">
+        @yield('navigation')
+    </div>
+ 
+    <div class="clearfix"></div>
+@endif
+
+@foreach ($users as $user)
+    <!-- $loop - специальная переменная доступная внутри цикла -->
+    @if ($loop->first)
+        This is the first iteration.
+    @endif
+
+    @if ($loop->last)
+        This is the last iteration.
+    @endif
+
+    <p>This is user {{ $user->id }}</p>
+@endforeach
+
+
+php artisan make:model Article --migration
+
+php artisan make:migration add_description_to_answers --table=answers
+
+php artisan migrate
+
+php artisan migrate:status
+
+
+php artisan tinker
+Psy Shell v0.10.0 (PHP 7.3.11 — cli) by Justin Hileman
+#
+>>> $a = new App\Models\Tests()
+=> App\Models\Article {#2970}
+# После того как объект модели создан, его можно наполнять данными через обычные свойства (на самом деле внутри используется `__set` и `__get`). Имена этих свойств, соответствуют именам в таблице.
+>>> $a->name = 'my super article'
+=> "my super article"
+>>> $a->body = 'my content'
+=> "my content"
+>>> $a
+=> App\Models\Article {#2970
+     name: "my super article",
+     body: "my content",
+   }
+   >>> $a->save()
+=> true
+>>> $a
+=> App\Models\Article {#2970
+     name: "my super article",
+     body: "my content",
+     updated_at: "2020-03-21 19:17:08",
+     created_at: "2020-03-21 19:17:08",
+     id: 1,
+   }
+   
+   Model::all()
+   Model::paginate($page)
+   >>> $u = \App\Models\User::first()
+>>> $u->toArray()
+
+string(29) "select * from "users" limit 1"
+=> [
+     "id" => 1,
+     "email" => "streich.viva@example.net",
+     "first_name" => "Tatum",
+     "last_name" => "Hudson",
+     "password" => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi",
+     "created_at" => "2020-03-21 19:31:38",
+     "updated_at" => "2020-03-21 19:31:38",
+   ]
+   
+   \DB::table('tests')->get();
+   
+   
+   Route::get('articles', [ArticleController::class, 'index'])
+  ->name('articles.index'); // имя маршрута, нужно для того, чтобы не создавать ссылки руками
+   
+   php artisan make:controller AcademyController
+   
+   class ArticleController extends Controller
+{
+    public function index()
+    {
+        $articles = Article::paginate();
+
+        // Статьи передаются в шаблон
+        // compact('articles') => [ 'articles' => $articles ]
+        return view('article.index', compact('articles'));
+    }
+}
+   
+   
+   58x35
+   
+   
+   
+   
+  
